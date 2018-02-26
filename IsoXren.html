@@ -1,13 +1,16 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="myApp">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>IsoXren</title>
     <link rel="stylesheet" type="text/css" href="Style.css">
+
 </head>
-<body>
+
+<body ng-controller="myCtrl">
     <div>
         <table>
             <tr>
@@ -20,7 +23,28 @@
                 <th>Blows</th>
                 <th>at depth</th>
             </tr>
+            <tr ng-repeat="i in blowSeries">
+                <td>
+                    <input type="number" disabled ng-model="i.blow" value="i.blow">
+                </td>
+                <td>
+                    <input type="number" disabled ng-model="i.atDepth" value="i.atDepth">
+                </td>
+
+                <td>
+                    <input type="number" ng-model="i.rawBlow" ng-focus="addRowFromBelow()" ng-blur="removeRowFromBelow()" ng-change="refresh()">
+                </td>
+                <td>
+                    <input type="number" ng-model="i.rawAtDepth" ng-focus="addRowFromBelow()" ng-blur="removeRowFromBelow()" ng-change="refresh()">
+                </td>
+
+            </tr>
         </table>
     </div>
+    <p>{{count}}</p>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="inputTable.js"></script>
 </body>
+
 </html>
